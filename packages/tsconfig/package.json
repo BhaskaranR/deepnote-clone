@@ -1,0 +1,6 @@
+{
+  "name": "@deepnote-clone/tsconfig",
+  "private": true,
+  "version": "1.0.0",
+  "files": ["base.json"]
+}

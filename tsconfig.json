@@ -1,0 +1,3 @@
+{
+  "extends": "@deepnote-clone/tsconfig/base.json"
+}
