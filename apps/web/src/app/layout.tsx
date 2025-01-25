@@ -2,6 +2,7 @@
 import "@/styles/globals.css";
 import { cn } from "@deepnote-clone/ui/cn";
 import "@deepnote-clone/ui/globals.css";
+import "@deepnote-clone/editor/editor.css";
 import { Provider as Analytics } from "@deepnote-clone/events/client";
 import { Toaster } from "@deepnote-clone/ui/toaster";
 import { GeistMono } from "geist/font/mono";
@@ -11,22 +12,22 @@ import type { ReactElement } from "react";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://business.deepnote-clone.com"),
+  metadataBase: new URL("https://deepnote-clone.com"),
   title: {
     default:
-      "Deepnote Clone | Earn While You Learn, Unlock Potential, Earn Rewards: The Community-Powered Platform",
+      "Deepnote Clone | Nothing here yet",
     template: "%s | Deepnote Clone",
   },
   description:
-    "Empower your local business with Deepnote Clone! Easily list your services, create engaging campaigns, and attract customers through gamified deals that drive sales and loyalty.",
+    "Figuring out what to put here.",
   openGraph: {
     title:
-      "Deepnote Clone | Earn While You Learn, Unlock Potential, Earn Rewards: The Community-Powered Platform",
+      "Deepnote Clone | Nothing here yet",
     description:
-      "Empower your local business with Deepnote Clone! Easily list your services, create engaging campaigns, and attract customers through gamified deals that drive sales and loyalty.",
-    url: "https://business.deepnote-clone.com",
+      "Figuring out what to put here.",
+    url: "https://deepnote-clone.com",
     siteName:
-      "Empower your local business with Deepnote Clone! Easily list your services, create engaging campaigns, and attract customers through gamified deals that drive sales and loyalty.",
+      "Figuring out what to put here.",
     locale: "en_US",
     type: "website",
     images: [
@@ -43,8 +44,8 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: "Deepnote Clone | Earn now. Close later. Secure your future home with us.",
-    description: "This is my portfolio.",
+    title: "Deepnote Clone | Nothing here yet",
+    description: "Figuring out what to put here.",
     images: [
       {
         url: "https://cdn.deepnote-clone.com/opengraph-image.jpg",
@@ -82,7 +83,7 @@ export const viewport = {
   ],
 };
 
-export const preferredRegion = ["fra1", "sfo1", "iad1"];
+export const preferredRegion = ["us-east-1"];
 export const maxDuration = 60;
 
 export default function Layout({

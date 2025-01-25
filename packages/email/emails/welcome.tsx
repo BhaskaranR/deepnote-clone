@@ -28,7 +28,7 @@ export const WelcomeEmail = ({
   fullName = "Randhir Lakavathu",
 }: WelcomeProps) => {
   const firstName = fullName.split(" ").at(0);
-  const text = `Hi ${firstName}, Welcome to Loopearn! I'm Randhir, founder of Loopearn. It's really important to us that you have a great experience ramping up.`;
+  const text = `Hi ${firstName}, Welcome to Deepnote Clone!`;
 
   return (
     <Html>

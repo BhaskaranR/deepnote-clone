@@ -4,7 +4,6 @@ import { acceptInviteAction } from "@/actions/accept-invite-action";
 import { changeTeamAction } from "@/actions/change-team-action";
 import { declineInviteAction } from "@/actions/decline-invite-action";
 import { leaveTeamAction } from "@/actions/leave-team-action";
-import { CreateTeamModal } from "@/components/modals/create-team-modal";
 import { useI18n } from "@/locales/client";
 import {
   AlertDialog,
@@ -265,10 +264,7 @@ export function DataTableHeader({ table }) {
           autoCorrect="off"
           spellCheck="false"
         />
-        <DialogTrigger asChild>
           <Button>Create team</Button>
-        </DialogTrigger>
-        <CreateTeamModal onOpenChange={onOpenChange} />
       </div>
     </Dialog>
   );

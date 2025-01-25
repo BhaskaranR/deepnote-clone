@@ -97,7 +97,7 @@ export function useNotifications() {
 
       if (userData) {
         setSubscriberId(
-          `${userData.business_users[0]?.business_id || ""}_${userData.id}`,
+          `${userData.team_id || ""}_${userData.id}`,
         );
       }
     }

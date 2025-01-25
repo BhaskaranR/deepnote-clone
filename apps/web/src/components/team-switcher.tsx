@@ -1,6 +1,5 @@
 "use client";
 import { changeTeamAction } from "@/actions/change-team-action";
-import { Dialog } from "@deepnote-clone/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,7 +20,6 @@ import { useAction } from "next-safe-action/hooks";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import * as React from "react";
-import { CreateTeamModal } from "./modals/create-team-modal";
 
 export const TeamSwitcher = () => {
   // const [isOpen, onOpenChange] = React.useState(false);

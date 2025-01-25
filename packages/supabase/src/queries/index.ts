@@ -69,7 +69,7 @@ export async function getTeamUserQuery(
       id,
       role,
       team_id,
-      team:team_id(id, slug, team_name, category, tags),
+      team:team_id(id, slug, team_name, tags),
       user:users(id, full_name, avatar_url, username)
     `,
     )
@@ -186,4 +186,8 @@ export async function getUserInviteQuery(
     .eq("code", params.code)
     .eq("email", params.email!)
     .single();
+}
+
+export async function getProjectsQuery(supabase: Client) {
+  return supabase.from("projects").select("*");
 }

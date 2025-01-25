@@ -79,4 +79,8 @@ export const LogEvents = {
     name: "Update App Settings",
     channel: "app",
   },
+  DeleteAttachment: {
+    name: "Delete Attachment",
+    channel: "project",
+  },
 };

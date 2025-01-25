@@ -4,7 +4,6 @@ import { Separator } from "@deepnote-clone/ui/separator";
 import { SidebarTrigger } from "@deepnote-clone/ui/sidebar";
 import { Skeleton } from "@deepnote-clone/ui/skeleton";
 import { Suspense } from "react";
-import { FeedbackForm } from "./feedback-form";
 
 export function Header() {
   return (
@@ -13,10 +12,8 @@ export function Header() {
 
       <Separator orientation="vertical" className="mr-2 h-4" />
 
-
       <div className="flex space-x-2 no-drag ml-auto">
-
-        <FeedbackForm />
+        
 
         <NotificationCenter />
 

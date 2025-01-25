@@ -6,6 +6,17 @@ import {
 } from "../queries";
 import type { Client } from "../types";
 
+export async function deleteAttachment(supabase: Client, id: string) {
+  const { data } = await supabase
+    .from("project_attachments")
+    .delete()
+    .eq("id", id)
+    .select("id, project_id, name, team_id")
+    .single();
+
+  return data;
+}
+
 export async function updateUser(supabase: Client, data) {
   const {
     data: { user },

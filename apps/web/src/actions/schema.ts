@@ -9,6 +9,9 @@ export const signUpSchema = z.object({
   // slug: z.string().optional(),
 });
 
+
+export const deleteAttachmentSchema = z.string();
+
 // sign up schema with first name, last name, company name, email & ein number
 export const signInSchema = z.object({
   email: z.string().email(),

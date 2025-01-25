@@ -26,6 +26,7 @@ const config = {
     ignoreBuildErrors: true,
   },
   experimental: {
+    externalDir: true,
     instrumentationHook: process.env.NODE_ENV === "production",
     outputFileTracingExcludes: {
       "*": ["node_modules/canvas*"],

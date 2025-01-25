@@ -9,7 +9,7 @@ DECLARE
   referrer_id uuid;
   onboarding_status public.onboarding_status := 'complete';
 BEGIN
-  SELECT id, referral_code INTO  team_id, new_referral_code
+  SELECT id INTO  team_id
     FROM
       public.team
     WHERE
@@ -33,8 +33,7 @@ BEGIN
     NEW.raw_user_meta_data ->> 'phone',
     NEW.raw_user_meta_data,
     NEW.raw_user_meta_data ->> 'avatar_url',
-    onboarding_status,
-    new_referral_code
+    onboarding_status
     );
 
   RETURN new;

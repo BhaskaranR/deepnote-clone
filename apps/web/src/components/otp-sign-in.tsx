@@ -1,7 +1,5 @@
 "use client";
 
-import { verifyOtpAction } from "@/actions/verify-otp-action";
-import { env } from "@/env.mjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createClient } from "@deepnote-clone/supabase/client";
 
@@ -16,6 +14,7 @@ import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { signInAction } from "@/actions/sign-in-action";
 
 async function checkEmailisBusiness(email: string) {
   const response = await fetch(`/api/auth/validate?email=${email}`);
@@ -35,19 +34,14 @@ type Props = {
 
 export function OTPSignIn({
   className,
-  inviteCode,
   email: defaultEmail,
 }: Props) {
-  const verifyOtp = useAction(verifyOtpAction);
+
+  const signIn = useAction(signInAction);
 
   const [isLoading, setLoading] = useState(false);
   const [isSent, setSent] = useState(false);
-  const [phone, setPhone] = useState();
   const [email, setEmail] = useState<string | null>(defaultEmail);
-  const [type, setType] = useState<"email" | "phone">("email");
-  const supabase = createClient();
-
-  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -58,87 +52,11 @@ export function OTPSignIn({
 
   async function onSubmit({ email }: z.infer<typeof formSchema>) {
     setLoading(true);
-
     setEmail(email);
-    const emailExists = await checkEmailisBusiness(email);
-    if (!emailExists) {
-      toast({
-        title: "Error",
-        description: "User does not exist.",
-        variant: "destructive",
-      });
-      setLoading(false);
-      return;
-    }
-
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        data: {
-          emailRedirectTo: env.NEXT_PUBLIC_APP_DOMAIN,
-        },
-        shouldCreateUser: false,
-      },
-    });
-    if (error) {
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
-      });
-      setLoading(false);
-      return;
-    }
-
+   
+    signIn.execute({ email })
     setSent(true);
     setLoading(false);
-  }
-
-  async function onComplete(token: string) {
-    if (type) {
-      verifyOtp.execute({
-        type,
-        token,
-        phone,
-        email,
-      });
-    }
-  }
-  if (isSent) {
-    return (
-      <div className={cn("flex flex-col space-y-4 items-center", className)}>
-        <InputOTP
-          maxLength={6}
-          autoFocus
-          onComplete={onComplete}
-          disabled={verifyOtp.status === "executing"}
-          render={({ slots }) => (
-            <InputOTPGroup>
-              {slots.map((slot, index) => (
-                <InputOTPSlot
-                  key={index.toString()}
-                  {...slot}
-                  className="w-[62px] h-[62px]"
-                />
-              ))}
-            </InputOTPGroup>
-          )}
-        />
-
-        <div className="flex space-x-2">
-          <span className="text-sm text-[#878787]">
-            Didn't receive the email?
-          </span>
-          <button
-            onClick={() => setSent(false)}
-            type="button"
-            className="text-sm text-primary underline font-medium"
-          >
-            Resend code
-          </button>
-        </div>
-      </div>
-    );
   }
 
   return (
@@ -162,6 +80,8 @@ export function OTPSignIn({
               </FormItem>
             )}
           />
+
+          
 
           <Button
             type="submit"

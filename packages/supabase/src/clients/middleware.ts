@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
-const localeRegex = /^\/(en|fr|de)(\/|$)/; // Add supported locales here
+const localeRegex = /^\/(en)(\/|$)/; // Add supported locales here
 
 export async function updateSession(
   request: NextRequest,
@@ -48,7 +48,6 @@ export async function updateSession(
   // issues with users being randomly logged out.
 
   // IMPORTANT: DO NOT REMOVE auth.getUser()
-
   const {
     data: { user },
   } = await supabase.auth.getUser();

@@ -9,6 +9,77 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      project_attachments: {
+        Row: {
+          created_at: string
+          id: string
+          name: string | null
+          path: string[] | null
+          project_id: string | null
+          size: number | null
+          team_id: string | null
+          type: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          path?: string[] | null
+          project_id?: string | null
+          size?: number | null
+          team_id?: string | null
+          type?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string | null
+          path?: string[] | null
+          project_id?: string | null
+          size?: number | null
+          team_id?: string | null
+          type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_attachments_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          author: string
+          created_at: string | null
+          id: string
+          last_opened_at: string | null
+          name: string
+          sharing: string
+          status: string
+        }
+        Insert: {
+          author: string
+          created_at?: string | null
+          id?: string
+          last_opened_at?: string | null
+          name: string
+          sharing: string
+          status: string
+        }
+        Update: {
+          author?: string
+          created_at?: string | null
+          id?: string
+          last_opened_at?: string | null
+          name?: string
+          sharing?: string
+          status?: string
+        }
+        Relationships: []
+      }
       team: {
         Row: {
           avatar_url: string | null

@@ -1,4 +1,3 @@
-import { ConsentBanner } from "@/components/consent-banner";
 import { Logo } from "@/components/logo";
 import { OTPSignIn } from "@/components/otp-sign-in";
 import type { Metadata } from "next";
@@ -8,25 +7,13 @@ export const metadata: Metadata = {
   title: "Login | Deepnote Clone",
 };
 
-interface PageProps {
-  searchParams: {
-    return_to?: string;
-    invite_code?: string;
-  };
-}
-export default async function Page({ searchParams }: PageProps) {
+export default async function Page() {
 
   const preferredSignInOption = (
     <OTPSignIn
       className="border-t-[1px] border-border pt-8"
-      email={searchParams?.email}
-      inviteCode={searchParams?.invite_code}
     />
   );
-
-  const queryString = new URLSearchParams(searchParams).toString();
-
-  const signupUrl = `/signup${queryString ? `?${queryString}` : ""}`;
 
   return (
     <div>
@@ -48,18 +35,9 @@ export default async function Page({ searchParams }: PageProps) {
               <h1 className="font-medium pb-1 text-3xl">Login to Deepnote Clone.</h1>
             </div>
 
-            <p className="font-medium pb-1 text-2xl text-[#878787]">
-              Earn While You Learn
-            </p>
 
             <div className="pointer-events-auto mt-6 flex flex-col mb-6">
               {preferredSignInOption}
-            </div>
-            <div className="my-4 text-center text-sm">
-              Don't have an account?{" "}
-              <Link href={signupUrl} className="underline">
-                Sign up
-              </Link>
             </div>
 
             <p className="text-xs text-[#878787]">

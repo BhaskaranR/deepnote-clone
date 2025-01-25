@@ -13,6 +13,7 @@ import {
   getTeamsByUserIdQuery,
   getTeamInvitesQuery,
   getUserQuery,
+  getProjectsQuery,
 } from "../queries";
 
 export const getSession = cache(async () => {
@@ -188,3 +189,8 @@ export const getUserInvites = async () => {
   )();
 };
 
+
+export const getProjects = async () => {
+  const supabase = createClient();
+  return getProjectsQuery(supabase);
+};

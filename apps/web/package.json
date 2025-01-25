@@ -12,7 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.9.1",
+    "@ai-sdk/openai": "^1.1.2",
     "@deepnote-clone/analytics": "workspace:*",
     "@deepnote-clone/events": "workspace:*",
     "@deepnote-clone/kv": "workspace:*",
@@ -20,6 +20,7 @@
     "@deepnote-clone/notification": "workspace:*",
     "@deepnote-clone/supabase": "workspace:*",
     "@deepnote-clone/ui": "workspace:*",
+    "@hookform/resolvers": "^3.9.1",
     "@novu/headless": "^2.0.3",
     "@number-flow/react": "^0.4.1",
     "@sentry/nextjs": "^8",
