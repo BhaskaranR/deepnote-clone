@@ -9,6 +9,7 @@ import { ExtensionKit } from '../extensions/extension-kit'
 import type { EditorUser } from '../components/BlockEditor/types'
 import { initialContent } from '../lib/data/initialContent'
 import { Ai } from '../extensions/Ai'
+import { transformDemoQueriesToTiptapContent } from '../lib/data/newContent'
 
 declare global {
   interface Window {
@@ -32,14 +33,16 @@ export const useBlockEditor = ({
   const [collabState, setCollabState] = useState<WebSocketStatus>(
     provider ? WebSocketStatus.Connecting : WebSocketStatus.Disconnected,
   )
+  const [content, setContent] = useState(transformDemoQueriesToTiptapContent())
+  console.log("Baba Content",content)
 
   const editor = useEditor(
     {
       immediatelyRender: true,
       shouldRerenderOnTransaction: false,
       autofocus: true,
+      content: content,
       onCreate: ctx => {
-        ctx.editor.commands.setContent(initialContent)
         ctx.editor.commands.focus('start', { scrollIntoView: true })
       },
       extensions: [
@@ -58,7 +61,7 @@ export const useBlockEditor = ({
           autocomplete: 'off',
           autocorrect: 'off',
           autocapitalize: 'off',
-          class: 'min-h-full',
+          class: 'min-h-full min-w-full',
         },
       },
     },

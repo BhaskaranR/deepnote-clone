@@ -87,7 +87,9 @@
     "./nucleo": "./src/icons/nucleo/index.ts",
     "./onboarding-popover": "./src/components/onboarding-popover.tsx",
     "./toggle-group": "./src/components/toggle-group.tsx",
-    "./client-only": "./src/components/client-only.tsx"
+    "./client-only": "./src/components/client-only.tsx",
+    "./query-block": "./src/components/code-block/QueryBlock.tsx",
+    "./sql-snippet": "./src/components/code-block/SqlSnippet.tsx"
   },
   "dependencies": {
     "@mui/icons-material": "^6.1.6",

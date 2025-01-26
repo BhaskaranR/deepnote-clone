@@ -12,6 +12,7 @@ import { TextMenu } from "../menus/TextMenu";
 import { ContentItemMenu } from "../menus/ContentItemMenu";
 import { useSidebar } from "../../hooks/useSidebar";
 import { LinkMenu } from "../menus";
+import StatusBar from "./components/Status";
 
 export const BlockEditor = ({
 	aiToken,
@@ -34,6 +35,7 @@ export const BlockEditor = ({
 	return (
 		<div className="flex h-full" ref={menuContainerRef}>
 			<div className="relative flex flex-col flex-1 h-full overflow-hidden">
+				<StatusBar className="mt-10"/>
 				<EditorContent editor={editor} className="flex-1 overflow-y-auto" />
 				<ContentItemMenu editor={editor} />
 				<LinkMenu editor={editor} appendTo={menuContainerRef} />

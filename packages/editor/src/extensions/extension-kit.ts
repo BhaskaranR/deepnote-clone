@@ -1,5 +1,6 @@
 'use client'
 
+import { HocuspocusProvider } from '@hocuspocus/provider'
 import {
   CharacterCount,
   CodeBlock,
@@ -29,6 +30,8 @@ import {
   Underline,
   Columns,
   Column,
+  CustomCodeBlock,
+  SqlSnippetNode,
   TaskItem,
   TaskList,
 } from '.'
@@ -36,7 +39,7 @@ import {
 import { isChangeOrigin } from '@tiptap/extension-collaboration'
 
 interface ExtensionKitProps {
-  provider?: HocuspocusProvider | null
+  provider?: HocuspocusProvider  | null
 }
 
 export const ExtensionKit = ({ provider }: ExtensionKitProps) => [
@@ -47,6 +50,8 @@ export const ExtensionKit = ({ provider }: ExtensionKitProps) => [
     nested: true,
   }),
   Column,
+  CustomCodeBlock,
+  SqlSnippetNode,
   Selection,
   Heading.configure({
     levels: [1, 2, 3, 4, 5, 6],

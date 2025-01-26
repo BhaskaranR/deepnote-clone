@@ -1,12 +1,14 @@
 import { Code, Play } from 'lucide-react'
 import  { DragEvent, ReactNode, useEffect, useMemo, useState } from 'react'
 import { BlockContainer } from './BlockContainer'
-import  { Parameter, parseParameters } from './sql-parameters'
+import  type { Parameter } from './sql-parameters'
+import { parseParameters } from './sql-parameters'
 import CodeBlock  from './CodeBlock'
 import { ButtonTooltip } from '../button-tooltip'
 import { LoadingSpinner } from '../loading-spinner'
-import { SQL_ICON } from '@/icons'
+import { SQL_ICON } from '../../icons'
 import { cn } from '../../utils'
+import { useExecuteSqlMutation } from './sql/execute-sql-mutation'
 
 
 interface QueryBlockProps {
@@ -86,12 +88,12 @@ export const QueryBlock = ({
   // [Joshen] This is for when we introduced the concept of parameters into our reports
   // const combinedParameterValues = { ...extParameterValues, ...parameterValues }
 
-  // const { mutate: execute, isLoading: isExecuting } = useExecuteSqlMutation({
-  //   onSuccess: (data) => setQueryResult(data.result),
-  // })
+  const { mutate: execute, isLoading: isExecuting } = useExecuteSqlMutation({
+    onSuccess: (data) => setQueryResult(data),
+  })
 
   const handleExecute = () => {
-  
+    execute()
   }
 
   // Run once on mount to parse parameters and notify parent
@@ -104,9 +106,9 @@ export const QueryBlock = ({
   }, [sql])
 
   useEffect(() => {
-    // if (!!sql && !isLoading && runQuery && isReadOnlySelect(sql) && !!project) {
-    //   handleExecute()
-    // }
+    if (!!sql && !isLoading && runQuery) {
+      handleExecute()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sql, isLoading, runQuery])
 
@@ -172,22 +174,22 @@ export const QueryBlock = ({
       )}
 
       {showSql && (
-        <div
-          className="shrink-0 w-full max-h-96 overflow-y-auto"
-          style={{ height: !!queryHeight ? `${queryHeight}px` : undefined }}
-        >
-          <CodeBlock
-            hideLineNumbers
-            wrapLines={false}
-            value={sql}
-            language="sql"
-            className={cn(
-              'max-w-none block !bg-transparent !py-3 !px-3.5 prose dark:prose-dark border-0 text-foreground !rounded-none w-full',
-              '[&>code]:m-0 [&>code>span]:text-foreground'
-            )}
-          />
-        </div>
+     
+           <CodeBlock className="border-0 rounded-none" showLineNumbers lang="sql" size='small'>
+              {sql}
+            </CodeBlock>
       )}
+
+          {queryResult ? (
+            <div
+              className={cn('flex-1 w-full overflow-auto relative')}
+              style={{ maxHeight: maxHeight ? `${maxHeight}px` : undefined }}
+            >
+              {/* <Results rows={queryResult} /> */}
+            </div>
+          ) : !isExecuting ? (
+            noResultPlaceholder
+          ) : null}
     </BlockContainer>
   )
 }

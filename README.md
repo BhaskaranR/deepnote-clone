@@ -1,7 +1,7 @@
 <p align="center">
 	<h1 align="center"><b>Deepnote Clone</b></h1>
 <p align="center">
-    An open-source starter kit based on <a href="https://deepnote-clone.com">Deepnote Clone</a>.
+    <a href="https://deepnote-clone.com">Deepnote Clone</a>.
     <br />
     <br />
     <a href="#whats-included"><strong>What's included</strong></a> ·
@@ -30,6 +30,7 @@
 [react-safe-action](https://next-safe-action.dev) - Validated Server Actions<br>
 [nuqs](https://nuqs.47ng.com/) - Type-safe search params state manager<br>
 [next-themes](https://next-themes-example.vercel.app/) - Theme manager<br>
+[tiptap](https://tiptap.dev/) - Rich text editor<br>
 
 ## Directory Structure
 
@@ -40,6 +41,7 @@
 │    ├── web                     # App - your product
 │    └── ...
 ├── packages                     # Shared packages between apps
+│    ├── editor                  # Editor
 │    ├── analytics               # OpenPanel analytics
 │    ├── email                   # React email library
 │    ├── jobs                    # Trigger.dev background jobs

@@ -39,7 +39,8 @@ export async function getTeamMembersQuery(
       `
       id,
       role,
-      team_id
+      team_id,
+      user:users(id, full_name, avatar_url, username)
     `,
     )
     .eq("team_id", teamId)

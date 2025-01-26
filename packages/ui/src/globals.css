@@ -33,6 +33,29 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --brand-default: 152.9deg 60% 52.9%;
+    --brand-600: 156.5deg 86.5% 26.1%;
+    --brand-500: 155.3deg 78.4% 40%;
+    --brand-400: 151.3deg 66.9% 66.9%;
+    --brand-300: 147.5deg 72% 80.4%;
+    --brand-200: 147.6deg 72.5% 90%;
+    --warning-default: 38.9deg 100% 57.1%;
+    --warning-600: 30.3deg 80.3% 47.8%;
+    --warning-500: 36.3deg 85.7% 67.1%;
+    --warning-400: 41.9deg 100% 81.8%;
+    --warning-300: 44.3deg 100% 91.8%;
+    --warning-200: 40deg 81.8% 97.8%;
+    --destructive-default: 10.2deg 77.9% 53.9%;
+    --destructive-600: 9.9deg 82% 43.5%;
+    --destructive-500: 10.4deg 77.1% 79.4%;
+    --destructive-400: 7.1deg 91.3% 91%;
+    --destructive-300: 7.1deg 100% 96.7%;
+    --destructive-200: 0deg 100% 99.4%;
   }
 
   .dark {
@@ -64,6 +87,29 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --brand-default: 153.1deg 60.2% 52.7%;
+    --brand-600: 154.9deg 59.5% 70%;
+    --brand-500: 154.9deg 100% 19.2%;
+    --brand-400: 155.5deg 100% 9.6%;
+    --brand-300: 155.1deg 100% 8%;
+    --brand-200: 162deg 100% 2%;
+    --warning-default: 38.9deg 100% 42.9%;
+    --warning-600: 38.9deg 100% 42.9%;
+    --warning-500: 34.8deg 90.9% 21.6%;
+    --warning-400: 33.2deg 100% 14.5%;
+    --warning-300: 32.3deg 100% 10.2%;
+    --warning-200: 36.6deg 100% 8%;
+    --destructive-default: 10.2deg 77.9% 53.9%;
+    --destructive-600: 9.7deg 85.2% 62.9%;
+    --destructive-500: 7.9deg 71.6% 29%;
+    --destructive-400: 6.7deg 60% 20.6%;
+    --destructive-300: 7.5deg 51.3% 15.3%;
+    --destructive-200: 10.9deg 23.4% 9.2%;
   }
 }
  

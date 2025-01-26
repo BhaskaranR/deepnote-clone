@@ -2,6 +2,13 @@ import { GripHorizontal } from 'lucide-react'
 import type { DragEvent, PropsWithChildren, ReactNode } from 'react'
 import { cn } from '../../utils'
 import { Tooltip, TooltipContent, TooltipTrigger } from '../tooltip'
+import { Card } from '../card'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../table"
+import { Button } from "../button"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select"
+import { Input } from "../input"
+import { Database, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Download, Eye, EyeOff } from "lucide-react"
+import { useState } from 'react'
 
 interface BlockContainerProps {
   icon: ReactNode
@@ -27,53 +34,41 @@ export const BlockContainer = ({
     ? children.filter(Boolean).filter((x) => !!x.props.children).length > 0
     : !!children
 
+  const [isSchemaVisible, setIsSchemaVisible] = useState(false);
+
+  const toggleSchemaVisibility = () => {
+    setIsSchemaVisible(!isSchemaVisible);
+  };
+
   return (
-    <div
-      draggable={draggable}
-      unselectable={draggable ? 'on' : undefined}
-      onDragStart={onDragStart}
-      className="h-full flex flex-col overflow-hidden bg-surface-100 border-overlay relative rounded border shadow-sm"
-    >
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div
-            className={cn(
-              'grid-item-drag-handle flex py-1 pl-3 pr-1 items-center gap-2 z-10 shrink-0 group',
-              draggable && 'cursor-move'
-            )}
-          >
-            <div
-              className={cn(
-                showDragHandle && 'transition-opacity opacity-100 group-hover:opacity-0'
-              )}
-            >
-              {icon}
-            </div>
-            {showDragHandle && (
-              <div className="absolute left-3 top-2.5 z-10 opacity-0 transition-opacity group-hover:opacity-100">
-                <GripHorizontal size={16} strokeWidth={1.5} />
-              </div>
-            )}
-            <h3 title={label} className="text-xs font-medium text-foreground-light flex-1 truncate">
-              {label}
-            </h3>
-            <div className="flex items-center">{actions}</div>
-          </div>
-        </TooltipTrigger>
-        {tooltip && (
-          <TooltipContent asChild side="bottom">
-            {tooltip}
-          </TooltipContent>
-        )}
-      </Tooltip>
-      <div
-        className={cn(
-          'flex flex-col flex-grow items-center justify-center',
-          hasChildren && 'border-t'
-        )}
-      >
-        {children}
+    <Card className="w-full grid">
+    <div className="p-4 border-b">
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <Database className="w-5 h-5 text-blue-600" />
+          <Select defaultValue="postgres">
+            <SelectTrigger className="w-[180px] text-xs">
+              <SelectValue placeholder="Select database" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="postgres">[Demo] Postgres</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-gray-500">Variable:</span>
+          <Input defaultValue="visits" className="w-[200px]" />
+        </div>
+        <div className="flex-1"/>
+        <Button variant="ghost" className='text-xs flex items-center gap-1' onClick={toggleSchemaVisibility}>
+          {isSchemaVisible ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+          {isSchemaVisible ? 'Hide schema' : 'Show schema'}
+        </Button>
       </div>
     </div>
+    <div className="px-2">
+      {children}
+    </div>
+    </Card>
   )
 }

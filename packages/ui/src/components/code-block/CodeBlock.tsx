@@ -1,15 +1,19 @@
-import { Check, Copy, File, Terminal } from 'lucide-react'
+import { Check, Copy } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
+import bash from 'react-syntax-highlighter/dist/cjs/languages/hljs/bash'
+import js from 'react-syntax-highlighter/dist/cjs/languages/hljs/javascript'
+import kotlin from 'react-syntax-highlighter/dist/cjs/languages/hljs/kotlin'
 import py from 'react-syntax-highlighter/dist/cjs/languages/hljs/python'
 import sql from 'react-syntax-highlighter/dist/cjs/languages/hljs/sql'
+import yaml from 'react-syntax-highlighter/dist/cjs/languages/hljs/yaml'
 import { Button } from '../button'
 import { cn } from '../../utils'
 import monokaiCustomTheme from './CodeBlock.utils'
 
-export type LANG =  'sql' | 'py' 
+export type LANG = 'js' | 'sql' | 'py' | 'bash' | 'ts' | 'tsx' | 'kotlin' | 'yaml'
 export interface CodeBlockProps {
   lang: LANG
   startingLineNumber?: number
@@ -53,8 +57,12 @@ function CodeBlock(props: CodeBlockProps) {
   // force jsx to be js highlighted
   if (lang === 'jsx') lang = 'js'
 
+  SyntaxHighlighter.registerLanguage('js', js)
   SyntaxHighlighter.registerLanguage('py', py)
   SyntaxHighlighter.registerLanguage('sql', sql)
+  SyntaxHighlighter.registerLanguage('bash', bash)
+  SyntaxHighlighter.registerLanguage('kotlin', kotlin)
+  SyntaxHighlighter.registerLanguage('yaml', yaml)
 
   // const large = props.size === 'large' ? true : false
   const large = false
@@ -66,43 +74,13 @@ function CodeBlock(props: CodeBlockProps) {
   if (!mounted) return null
 
   return (
-    <div className="not-prose dark overflow-hidden">
-      {filename && (
-        <div
-          className="
-            bg-background
-            text-muted
-            flex
-            h-8 w-full
-            items-center
-
-            gap-1
-            rounded-tr
-            rounded-tl
-
-            border-t
-
-            border-r
-            border-l
-            px-4
-            font-sans
-            "
-        >
-          {lang === 'bash' ? (
-            <Terminal size={12} strokeWidth={2} />
-          ) : (
-            <File size={12} strokeWidth={2} />
-          )}
-          <span className="text-xs">{filename ?? 'index.js'}</span>
-        </div>
-      )}
-      <div className="relative">
+    <div className="relative" >
         {/* @ts-ignore */}
         <SyntaxHighlighter
           language={lang}
           style={isDarkTheme ? monokaiCustomTheme.dark : monokaiCustomTheme.light}
           className={cn(
-            'synthax-highlighter border border-default/15 rounded-lg',
+            'bg-yellow synthax-highlighter rounded-lg',
             !filename && 'rounded-t-lg',
             'rounded-b-lg',
             props.className
@@ -118,6 +96,7 @@ function CodeBlock(props: CodeBlockProps) {
             fontSize: large ? 18 : '0.775rem',
             lineHeight: large ? 1.6 : 1.4,
           }}
+          contentEditable={true}
           showLineNumbers={props.showLineNumbers}
           lineNumberStyle={{
             padding: '0px',
@@ -133,24 +112,25 @@ function CodeBlock(props: CodeBlockProps) {
           <div className="absolute right-2 top-2">
             <CopyToClipboard text={props.children}>
               <Button
-                type="text"
-                icon={
-                  copied ? (
-                    <span className="text-brand">
-                      <Check strokeWidth={3} />
-                    </span>
-                  ) : (
-                    <Copy />
-                  )
-                }
+                type="button"
                 onClick={() => handleCopy()}
                 aria-label="Copy"
-                className="px-1.5 py-1.5 border border-transparent hover:border-strong"
-              />
+                size='icon'
+                variant='ghost'
+              >
+                {
+                  copied ? (
+                    <span className="text-brand">
+                      <Check strokeWidth={3} size={16} className='w-4 h-4' />
+                    </span>
+                  ) : (
+                    <Copy className='w-4 h-4' />
+                  )
+                }
+                </Button>
             </CopyToClipboard>
           </div>
         ) : null}
-      </div>
     </div>
   )
 }

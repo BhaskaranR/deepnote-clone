@@ -1,4 +1,3 @@
-import Toolbar from "@/components/onboarding/toolbar";
 import { setupAnalytics } from "@deepnote-clone/events/server";
 import {
   getPendingTeamInvites,
@@ -36,7 +35,6 @@ export default async function Layout({
   return (
       <ClientSidebarWrapper >
         {children}
-        <Toolbar show={["onboarding"]} />
       </ClientSidebarWrapper>
   );
 }
