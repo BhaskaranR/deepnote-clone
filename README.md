@@ -73,7 +73,7 @@ OpenPanel<br>
 Clone this repo locally with the following command:
 
 ```bash
-bunx degit deepnote-clone/v1 v1
+git clone https://github.com/BhaskaranR/deepnote-clone.git
 ```
 
 1. Install dependencies using bun:
@@ -100,10 +100,7 @@ bun dev:app // starts the app in development mode
 bun dev:api // starts the api in development mode
 bun dev:email // starts the email app in development mode
 
-// Database
-bun migrate // run migrations
-bun seed // run seed
-```
+
 
 ## Deploy to Vercel
 
