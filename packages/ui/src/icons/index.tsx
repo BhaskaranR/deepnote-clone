@@ -891,3 +891,17 @@ export const SQL_ICON = forwardRef<SVGSVGElement, LucideSVGProps>((props, ref) =
     </defs>
   </svg>
 ))
+
+export function SnowflakeIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-4 w-4"
+    >
+      {/* SVG path data for the Snowflake icon */}
+      <path d="M12 2l1.09 3.26L16 6l-2.91 1.74L12 11l-1.09-3.26L8 6l2.91-1.74L12 2zm0 20l-1.09-3.26L8 18l2.91-1.74L12 13l1.09 3.26L16 18l-2.91 1.74L12 22zm10-10l-3.26-1.09L18 8l-1.74 2.91L13 12l3.26 1.09L18 16l1.74-2.91L22 12zm-20 0l3.26 1.09L6 16l1.74-2.91L11 12l-3.26-1.09L6 8l-1.74 2.91L2 12z" />
+    </svg>
+  );
+}
