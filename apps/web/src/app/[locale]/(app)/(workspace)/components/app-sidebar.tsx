@@ -9,7 +9,7 @@ import {
   Database,
   Calendar,
 } from "lucide-react";
-import { NavMain } from "./nav-main"
+import { NavMain } from "@/components/nav-main"
 import type React from "react";
 import { MoreHorizontal, type LucideIcon } from "lucide-react"
 import { Plus } from "lucide-react"
@@ -21,12 +21,10 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSkeleton,
   SidebarRail,
 } from "@deepnote-clone/ui/sidebar";
 import { TeamSwitcher } from "@/components/team-switcher";
