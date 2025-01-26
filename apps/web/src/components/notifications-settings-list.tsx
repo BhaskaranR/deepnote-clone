@@ -5,13 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@deepnote-clone/ui/card";
-import { ErrorBoundary } from "next/dist/client/components/error-boundary";
-import { Suspense } from "react";
-import { ErrorFallback } from "./error-fallback";
-import {
-  NotificationSettings,
-  NotificationSettingsSkeleton,
-} from "./notification-settings";
 
 export async function NotificationsSettingsList() {
   return (
@@ -24,11 +17,7 @@ export async function NotificationsSettingsList() {
       </CardHeader>
 
       <CardContent>
-        <ErrorBoundary errorComponent={ErrorFallback}>
-          <Suspense fallback={<NotificationSettingsSkeleton />}>
-            <NotificationSettings />
-          </Suspense>
-        </ErrorBoundary>
+      
       </CardContent>
     </Card>
   );

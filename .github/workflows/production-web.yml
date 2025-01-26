@@ -26,11 +26,11 @@ jobs:
       #   run: bun run lint --filter=@deepnote-clone/web
       # - name: 🪐 Check TypeScript
       #   run: bun run typecheck --filter=@deepnote-clone/web
-      # - name: 📤 Pull Vercel Environment Information
-      #   run: bunx vercel env pull .env --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      # - name: 📤 Pull Vercel Environment Information
-      #   run: bunx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      # - name: 🏗 Build Project Artifacts
-      #   run: bunx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      # - name: Deploy Project Artifacts to Vercel
-      #   run: bunx vercel deploy --prebuilt --prod --archive=tgz --token=${{ secrets.VERCEL_TOKEN }}
+      - name: 📤 Pull Vercel Environment Information
+        run: bunx vercel env pull .env --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: 📤 Pull Vercel Environment Information
+        run: bunx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: 🏗 Build Project Artifacts
+        run: bunx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: bunx vercel deploy --prebuilt --prod --archive=tgz --token=${{ secrets.VERCEL_TOKEN }}
