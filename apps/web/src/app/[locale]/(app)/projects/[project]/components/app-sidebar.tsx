@@ -162,13 +162,21 @@ export function AppSidebar() {
                   placeholder="Search integration to connect"
                   className="w-full p-2 mb-2 border border-gray-300 rounded"
                 />
-                <DropdownMenuItem asChild key="demo-snowflake" className="flex items-center gap-2 p-1 mt-2">
+                <DropdownMenuItem
+                  asChild
+                  key="demo-snowflake"
+                  className="flex items-center gap-2 p-1 mt-2"
+                >
                   <a href="#" className="flex items-center gap-2">
                     <SnowflakeIcon />
                     <span>[Demo] Snowflake</span>
                   </a>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild key="create-integration" className="flex items-center gap-2 p-1 mt-2">
+                <DropdownMenuItem
+                  asChild
+                  key="create-integration"
+                  className="flex items-center gap-2 p-1 mt-2"
+                >
                   <a href="#" className="flex items-center gap-2">
                     <Plus className="h-4 w-4" />
                     <span>Create a new integration</span>
@@ -201,7 +209,7 @@ export function AppSidebar() {
             </Button>
           </div>
           <SidebarGroupContent>
-            <Card className="mx-2 flex flex-col items-center gap-4 p-4 text-center text-sm text-muted-foreground">
+            <div className="flex flex-col items-center justify-center gap-4 py-8 text-center">
               <FileText className="h-8 w-8" />
               <div className="space-y-2">
                 <h3 className="font-semibold text-foreground">Import files</h3>
@@ -210,23 +218,25 @@ export function AppSidebar() {
                   notebooks in this project.
                 </p>
               </div>
-            </Card>
+            </div>
           </SidebarGroupContent>
         </SidebarGroup>
 
         <SidebarGroup>
           <SidebarGroupLabel className="text-xs">Terminals</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a href="#">
-                    <Terminal className="h-4 w-4" />
-                    <span>{"Bhaskaran Rathnachalam's terminal"}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
+            <div className="flex flex-col items-center justify-center gap-4 py-8 text-center">
+              <div className="rounded-lg border border-gray-800 p-4">
+                <Terminal className="mx-auto h-4 w-4 text-gray-500" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground">No terminals</h3>
+                <p>
+                  Create a terminal to connect to the underlying project's
+                  machine
+                </p>
+              </div>
+            </div>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
@@ -236,10 +246,10 @@ export function AppSidebar() {
         <SidebarGroupContent>
           <div className="space-y-2 px-2">
             <div className="space-y-4">
-              <Button variant="outline" className="w-full justify-start">
+              <Button variant="outline" className="w-full justify-center">
                 <div>
                   <div className="text-xs font-semibold">Basic</div>
-                  <div className="text-xs text-muted-foreground">
+                  <div className="text-xs text-center text-muted-foreground ml-auto">
                     2 vCPUs, 5 GB memory
                   </div>
                 </div>
