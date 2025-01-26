@@ -50,7 +50,39 @@ export const TeamSwitcher = () => {
   }, []);
 
   if (!teams.length)
-    return <div className="size-8 bg-gray-200 animate-pulse rounded-full" />;
+    return (
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <SidebarMenuButton
+                size="lg"
+                className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              >
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary bg-muted text-sidebar-primary-foreground">
+                  <Image
+                    src="https://api.dicebear.com/9.x/notionists/png?seed=cus_BH6tDUWc9n0Y2pf55tVbk1hc"
+                    alt="Default Team Avatar"
+                    width={24}
+                    height={24}
+                    className="size-4 shrink-0"
+                  />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold ">
+                    <div className="bg-gray-200 animate-pulse h-4 w-24 rounded"/>
+                  </span>
+                  <span className="truncate text-xs">
+                    <div className="bg-gray-200 animate-pulse h-4 w-24 rounded"/>
+                  </span>
+                </div>
+                <ChevronsUpDown className="ml-auto" />
+              </SidebarMenuButton>
+            </DropdownMenuTrigger>
+          </DropdownMenu>
+        </SidebarMenuItem>
+      </SidebarMenu>
+    );
 
   return (
     <SidebarMenu>
@@ -71,14 +103,20 @@ export const TeamSwitcher = () => {
                     className="size-4 shrink-0"
                   />
                 ) : (
-                  <div className="size-4 shrink-0 bg-gray-200 animate-pulse rounded-full">
-                    {/* Skeleton loader for avatar */}
-                  </div>
+                  <Image
+                    src="https://api.dicebear.com/9.x/notionists/png?seed=cus_BH6tDUWc9n0Y2pf55tVbk1hc"
+                    alt="Default Team Avatar"
+                    width={24}
+                    height={24}
+                    className="size-4 shrink-0"
+                  />
                 )}
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">
-                  {activeTeam?.team_name}
+                  {activeTeam?.team_name || (
+                    <div className="bg-gray-200 animate-pulse h-4 w-24 rounded"></div>
+                  )}
                 </span>
                 <span className="truncate text-xs">{activeTeam?.plan}</span>
               </div>
