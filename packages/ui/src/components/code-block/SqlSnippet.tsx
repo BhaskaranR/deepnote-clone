@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Code, Play, DatabaseIcon } from 'lucide-react'
 import { Button } from '../button'
-import { SQL_ICON } from '../../icons'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '../chart'
 import { cn } from '../../utils/cn'
 import { Card } from '../card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select"
 import { Database } from "lucide-react"
-import { Input } from "../input"
+import { useSqlSnippet } from './hooks/SqlSnippetContext'
 
 
 import { BarChart, Bar, XAxis, CartesianGrid } from 'recharts'
@@ -68,6 +67,8 @@ export const SqlSnippet = ({
   resultType = 'table',
   mockData,
 }: SqlSnippetProps) => {
+  const { registerSnippet } = useSqlSnippet();
+
   const [showCode, setShowCode] = useState(true)
   const [isExecuting, setIsExecuting] = useState(false)
   const [showResults, setShowResults] = useState(false)
@@ -94,8 +95,10 @@ export const SqlSnippet = ({
 
   // Auto-execute on mount
   useEffect(() => {
-    handleExecute()
-  }, [])
+    registerSnippet(id, handleExecute);
+    handleExecute(); // Auto-execute on mount
+  }, []); // Empty dependency array ensures this runs only once on mount
+
 
   const ResultsDisplay = () => {
     if (resultType === 'chart') {

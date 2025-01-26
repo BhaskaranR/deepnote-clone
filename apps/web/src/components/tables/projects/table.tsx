@@ -71,8 +71,8 @@ export function ProjectsSkeleton() {
     
       <div className="flex items-center pb-4 space-x-4">
         {/* Add a Header with the title "Private Projects" */}
-        <h1 className="text-2xl font-bold">Private Projects</h1>
-        <div className="flex-1"/>
+        <h1 className="text-2xl font-bold hidden md:block">Private Projects</h1>
+        <div className="flex-1 hidden md:block"/>
         <Input
           className="ml-auto"
           placeholder="Filter..."

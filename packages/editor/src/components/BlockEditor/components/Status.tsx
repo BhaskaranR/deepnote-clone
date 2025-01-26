@@ -1,12 +1,25 @@
-"use client"
+"use client";
 
-import { Button } from "@deepnote-clone/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@deepnote-clone/ui/dropdown-menu"
-import { Calendar, ChevronDown, Play } from "lucide-react"
-import { cn } from "@deepnote-clone/ui/cn"
-export default function StatusBar({className}:{className?:string}) {
+import { Button } from "@deepnote-clone/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@deepnote-clone/ui/dropdown-menu";
+import { Calendar, ChevronDown, Play } from "lucide-react";
+import { cn } from "@deepnote-clone/ui/cn";
+import { useSqlSnippet } from "@deepnote-clone/ui/hooks/SqlSnippetContext";
+
+export default function StatusBar({ className }: { className?: string }) {
+  const { runAllSnippets } = useSqlSnippet();
   return (
-    <div className={cn("flex items-center gap-2 p-2 border rounded-lg bg-background", className)}>
+    <div
+      className={cn(
+        "flex items-center gap-2 p-2 border rounded-lg bg-background",
+        className,
+      )}
+    >
       <div className="flex items-center gap-2 flex-1">
         <span className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
@@ -26,17 +39,18 @@ export default function StatusBar({className}:{className?:string}) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>Run Project</DropdownMenuItem>
-          <DropdownMenuItem>Run Tests</DropdownMenuItem>
-          <DropdownMenuItem>Run Debug</DropdownMenuItem>
+          <DropdownMenuItem onClick={runAllSnippets}>
+            Run Project
+          </DropdownMenuItem>
+          <DropdownMenuItem disabled>Run Tests</DropdownMenuItem>
+          <DropdownMenuItem disabled>Run Debug</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <Button variant="outline" size="sm" className="gap-2">
+      <Button variant="outline" size="sm" className="gap-2 disabled">
         <Calendar className="h-4 w-4" />
         Create app
       </Button>
     </div>
-  )
+  );
 }
-
