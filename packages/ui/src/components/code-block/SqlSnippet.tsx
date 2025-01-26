@@ -87,7 +87,7 @@ export const SqlSnippet = ({
         setResults(
           resultType === 'chart'
             ? mockData || MOCK_CHART_DATA
-            : mockData?.rows || MOCK_TABLE_DATA.rows
+            : mockData || MOCK_TABLE_DATA.rows
         )
       }
     }, 1000)
